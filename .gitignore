@@ -1,0 +1,33 @@
+# Never commit ROMs / executables / disc images (copyrighted) or IDA databases
+*.z64
+*.n64
+*.v64
+*.iso
+*.bin
+*.exe
+*.xbe
+*.elf
+*.62
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+
+# Analysis outputs (large, derived, may contain copyrighted decompiled code)
+work/
+*_summary.txt
+*_reference.c
+loadcheck.txt
+probe.txt
+decomp_diag.txt
+*.csv
+
+# Allow the named-functions handoff artifact (addresses+labels only, no code)
+!handoffs/*.txt
+
+# OS / editor
+Thumbs.db
+.DS_Store
+*.swp
