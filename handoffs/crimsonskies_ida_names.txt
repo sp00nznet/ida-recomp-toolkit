@@ -1,0 +1,3 @@
+﻿# Crimson Skies - IDA FLIRT-identified names (347 functions, VC6/MFC42/std/ATL)
+# Format: 0xADDRESS name  -- adopt the non-CRT ones into functions.json
+System.Object[]

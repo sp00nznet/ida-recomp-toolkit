@@ -91,6 +91,15 @@ idat.exe -A -Tbinary -pmipsb -b0x7FFFF40 `
 `n64_analyze.py` auto-finds `symbols.toml` + the `*.recomp.toml`, seeds all
 functions, finds gaps, checks boundaries, and decompiles.
 
+### PC / x86 (VC6 PE, e.g. Crimson Skies)
+Native PE — loads in IDA directly at its image base, so it aligns with the recomp's
+addresses with no tricks. The scripts also apply VC6/MFC FLIRT signatures and do a
+real **vtable scan** (critical for C++ games — call-graph discovery misses virtuals):
+```powershell
+py -3.11 tools\crimson_gap.py      <decrypted.exe> <config_dir> <out_dir>
+py -3.11 tools\crimson_vtables.py  <decrypted.exe> <config_dir> <out_dir>
+```
+
 ### N64 overlay games (e.g. pokemonsnap)
 Overlays share vram (mutually exclusive at runtime) → no single base. The overlay
 loader flat-loads, copies each section's ROM bytes to its true vram, and selects a
@@ -114,6 +123,8 @@ To analyze a specific overlay, load `main` + that one overlay in its own databas
 | `tools/pepsiman_followup.py` | Boundary validation + data-false-positive ID + decompile recovered funcs |
 | `tools/n64_analyze.py` | Single-segment N64: seed `symbols.toml`, cross-validate, decompile |
 | `tools/n64_overlay_analyze.py` | Overlay N64: per-section vram mapping + resident cross-validation |
+| `tools/crimson_gap.py` | x86 PE: gap vs `functions.json` + VC6/MFC FLIRT naming |
+| `tools/crimson_vtables.py` | x86 PE: vtable scan → virtual methods the recomp missed |
 | `tools/diagnostics/*` | Load-alignment / decompiler / boundary probes used to build the above |
 
 ---
@@ -126,10 +137,13 @@ To analyze a specific overlay, load `main` + that one overlay in its own databas
 | **extremeg** | N64 | N64Recomp (curated) | Clean — 0 missed, 8 IDA-only (likely jump-table targets) |
 | **podracer** | N64 | N64Recomp | **Flawless** — 880/880, 0 discrepancies |
 | **pokemonsnap** | N64 | N64Recomp | Clean resident layout; 18 overlays pending per-overlay runs |
+| **crimsonskies** | PC x86 | custom (VC6/MFC) | **~770 missed C++ virtual methods** (discovery doesn't parse vtables); 347 FLIRT names; 3 data false-positives |
 
 **Takeaway:** curated symbol files (N64Recomp) validate near-perfectly against IDA;
-auto-discovery (psxrecomp) had real, actionable bugs. Per-project detail and action
-items are in [`handoffs/`](handoffs/).
+auto-discovery toolchains (psxrecomp, the Crimson Skies pipeline) had real, actionable
+gaps — most strikingly, call-graph discovery on a C++ binary misses ~770 vtable-only
+virtual methods that IDA recovers. Per-project detail and action items are in
+[`handoffs/`](handoffs/).
 
 ---
 
