@@ -125,6 +125,10 @@ To analyze a specific overlay, load `main` + that one overlay in its own databas
 | `tools/n64_overlay_analyze.py` | Overlay N64: per-section vram mapping + resident cross-validation |
 | `tools/crimson_gap.py` | x86 PE: gap vs `functions.json` + VC6/MFC FLIRT naming |
 | `tools/crimson_vtables.py` | x86 PE: vtable scan → virtual methods the recomp missed |
+| `tools/crimson_emit_patch.py` | Emit missed virtuals as a `functions.json`-schema patch |
+| `tools/mw3_bootstrap.py` | Bootstrap a *fresh* PE's function list from IDA (incl. vtables) |
+| `tools/pe_probe.py` | PE triage: sections, compiler, SafeDisc markers, a decompile |
+| `tools/mdf2iso.py` | Convert an Alcohol `.mdf` disc image to a plain ISO |
 | `tools/diagnostics/*` | Load-alignment / decompiler / boundary probes used to build the above |
 
 ---
@@ -138,12 +142,18 @@ To analyze a specific overlay, load `main` + that one overlay in its own databas
 | **podracer** | N64 | N64Recomp | **Flawless** — 880/880, 0 discrepancies |
 | **pokemonsnap** | N64 | N64Recomp | Clean resident layout; 18 overlays pending per-overlay runs |
 | **crimsonskies** | PC x86 | custom (VC6/MFC) | **~770 missed C++ virtual methods** (discovery doesn't parse vtables); 347 FLIRT names; 3 data false-positives |
+| **xwa** | PC x86 | custom (C) | mature — but **7 false-positive functions** (jump tables / padding) + 177 missed funcs (85 called); 310 names |
+| **mechwarrior3** | PC x86 | **IDA-seeded (new)** | bootstrapped from scratch: 2,814 funcs, 950 virtual methods captured up-front (avoids the Crimson gap) |
 
 **Takeaway:** curated symbol files (N64Recomp) validate near-perfectly against IDA;
-auto-discovery toolchains (psxrecomp, the Crimson Skies pipeline) had real, actionable
-gaps — most strikingly, call-graph discovery on a C++ binary misses ~770 vtable-only
-virtual methods that IDA recovers. Per-project detail and action items are in
-[`handoffs/`](handoffs/).
+auto-discovery toolchains (psxrecomp, Crimson Skies, XWA) had real, actionable gaps —
+most strikingly, call-graph discovery on a C++ binary misses vtable-only virtual
+methods that IDA recovers. The flip side: IDA can **seed** a brand-new recomp's function
+list (see MechWarrior 3) so those virtuals are present from day one. Per-project detail
+and action items are in [`handoffs/`](handoffs/).
+
+### Related project repos (scaffolded by this toolkit)
+- [`mechwarrior3-recomp`](https://github.com/sp00nznet/mechwarrior3-recomp) — fresh recomp seeded by IDA (Zipper GOS engine, shared with Crimson Skies / Recoil).
 
 ---
 
