@@ -45,7 +45,7 @@ non-CRT ones to make the lifted C readable.
 - **3 data** — recomp emitted a function at a data address (genuine false positives):
   see `crimson_recomp_only.csv`.
 
-## Artifacts (`E:\ida\work\crimsonskies\`)
+## Artifacts (`$IDA_WORK/crimsonskies/`)
 - `crimson_missed_virtuals.csv` — **773 missed virtual methods** (the priority fix)
 - `crimson_ida_only.csv` — all 1,526 IDA-only, classified (library/called/vtable/noref)
 - `crimson_ida_names.csv` — 347 FLIRT names to adopt

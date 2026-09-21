@@ -51,7 +51,7 @@ exact handlers still missing. Triage `crimson_ida_only.csv` (filter `kind=called
 ## Enrichment: 310 FLIRT names (`crimson_ida_names.csv`)
 Library functions (VC CRT, std) named by IDA that the recomp has as `sub_`.
 
-## Artifacts (`E:\ida\work\xwa\`)
+## Artifacts (`$IDA_WORK/xwa/`)
 - `crimson_recomp_only.csv` — the 199, classified (contains the 7 to delete)
 - `crimson_ida_only.csv` — the 226, classified (the 177 to add)
 - `crimson_ida_names.csv` — 310 names

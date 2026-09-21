@@ -54,9 +54,9 @@ addresses matching the recomp exactly, with float-register tracking intact
 (useful for the matrix/physics code):
 
 ```
-E:\ida\work\extremeg\decomp\_extremeg_reference.c   (~100 KB)
+$IDA_WORK/extremeg/decomp/_extremeg_reference.c   (~100 KB)
 ```
 
-Regenerate / extend with `E:\ida\tools\n64_analyze.py` (same idat recipe above).
+Regenerate / extend with `tools/n64_analyze.py` (same idat recipe above).
 The script also works on other N64Recomp projects (podracer, pokemonsnap) by
 pointing `PROJ` at them.

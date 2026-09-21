@@ -4,7 +4,7 @@ Source: headless IDA Pro 9.1 (idalib) analysis of `SLPS_017.62`, cross-reference
 against `RecompiledFuncs/` and `config/`. IDA found **1156 functions** vs the
 **1211** psxrecomp emits; this doc captures the differences worth acting on.
 
-Generated 2026-05. Full data artifacts live at `E:\ida\work\pepsiman\`
+Generated 2026-05. Full data artifacts live at `$IDA_WORK/pepsiman/`
 (`gap_worklist.csv`, `reverse_gap.csv`, `task1_boundaries.csv`,
 `task2_data_fp.csv`, `decomp/`, `recovered/`). The actionable subset is inlined
 below so this file stands alone.
@@ -104,5 +104,5 @@ IDA — a point in psxrecomp's favor. No action; cross-check only.
 ## How to regenerate / extend
 
 The analysis is fully scripted and headless (no IDA GUI). Scripts:
-`E:\ida\tools\pepsiman_gap.py`, `pepsiman_decompile.py`, `pepsiman_gap_addrs.py`,
+`tools/pepsiman_gap.py`, `pepsiman_decompile.py`, `pepsiman_gap_addrs.py`,
 `pepsiman_followup.py`. Re-run any after psxrecomp changes to re-measure the gap.

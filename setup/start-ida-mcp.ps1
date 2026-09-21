@@ -23,7 +23,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$exe = "C:\Users\nedch\AppData\Local\Programs\Python\Python311\Scripts\idalib-mcp.exe"
+$exe = "$env:LOCALAPPDATA\Programs\Python\Python311\Scripts\idalib-mcp.exe"
 
 function Stop-OnPort([int]$p) {
   $conns = Get-NetTCPConnection -LocalPort $p -State Listen -ErrorAction SilentlyContinue

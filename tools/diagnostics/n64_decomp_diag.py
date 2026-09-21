@@ -2,7 +2,7 @@
 import os
 import ida_auto, ida_funcs, ida_bytes, ida_name, ida_segment, ida_hexrays, idc, ida_pro
 
-PROJ=r"D:\recomp\n64\extremeg"; OUT=r"E:\ida\work\extremeg"
+PROJ=r"$RECOMP_ROOT/n64\extremeg"; OUT=r"$IDA_WORK/extremeg"
 def parse_symbols(path):
     sections,funcs,cur,mode=[],[],{},None
     def flush():

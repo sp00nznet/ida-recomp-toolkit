@@ -12,8 +12,8 @@ import ida_auto, ida_funcs, ida_bytes, ida_name, ida_segment, ida_hexrays
 import ida_lines, idc, idautils, ida_pro, ida_ida
 
 _A = idc.ARGV[1:] if len(idc.ARGV) > 1 else []
-PROJ   = _A[0] if len(_A) > 0 else r"D:\recomp\n64\extremeg"
-OUT    = _A[1] if len(_A) > 1 else r"E:\ida\work\extremeg"
+PROJ   = _A[0] if len(_A) > 0 else r"$RECOMP_ROOT/n64\extremeg"
+OUT    = _A[1] if len(_A) > 1 else r"$IDA_WORK/extremeg"
 SYMS   = _A[2] if len(_A) > 2 else os.path.join(PROJ, "symbols.toml")
 # find recomp config: <name>.recomp.toml or recomp.toml
 RECOMP = _A[3] if len(_A) > 3 else next(

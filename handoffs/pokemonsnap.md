@@ -10,7 +10,7 @@ menu overlays (`beach/tunnel/cave/river/volcano/valley_code`, `oaks_lab`,
 `photo_check`, menus, …) load into **overlapping vram** — they are mutually
 exclusive at runtime and cannot coexist in one database.
 
-**Loader** (`E:\ida\tools\n64_overlay_analyze.py`, via `idat -Tbinary -pmipsb -b0`):
+**Loader** (`tools/n64_overlay_analyze.py`, via `idat -Tbinary -pmipsb -b0`):
 flat-loads for a MIPS64 db, then copies each section's ROM bytes to its true vram,
 greedily selecting a **non-overlapping** set (one consistent memory layout).
 
@@ -31,5 +31,5 @@ vram region holds that overlay's bytes). The loader can be pointed at a chosen
 overlay set — straightforward extension of `n64_overlay_analyze.py`.
 
 ## Deliverable
-`E:\ida\work\pokemonsnap\decomp\_pokemonsnap_reference.c` (~180 KB) — MIPS64
+`$IDA_WORK/pokemonsnap/decomp/_pokemonsnap_reference.c` (~180 KB) — MIPS64
 pseudocode of the 15 largest resident functions, addresses matching the recomp.

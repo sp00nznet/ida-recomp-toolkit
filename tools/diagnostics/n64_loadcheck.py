@@ -15,6 +15,6 @@ for ea in (0x8004B8A0, 0x8004D128, 0x80000000):
     line = ida_lines.tag_remove(idc.generate_disasm_line(ea, 0) or "") if m else "(unmapped)"
     out.append(f"  0x{ea:08X} mapped={m} [{raw}]  {line}")
 
-with open(r"E:\ida\work\extremeg\loadcheck.txt", "w", encoding="utf-8") as f:
+with open(r"$IDA_WORK/extremeg\loadcheck.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(out))
 ida_pro.qexit(0)

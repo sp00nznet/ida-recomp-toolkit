@@ -3,7 +3,7 @@
 IDA Professional 9.1 driven headlessly (no GUI). Two complementary workflows are set up.
 
 - **IDA install:** `C:\Program Files\IDA Professional 9.1`
-- **Python:** 3.11 (`C:\Users\nedch\AppData\Local\Programs\Python\Python311`) — `idapro` + `ida-pro-mcp` are installed here.
+- **Python:** 3.11 (`%LOCALAPPDATA%\Programs\Python\Python311`) — `idapro` + `ida-pro-mcp` are installed here.
 - **License:** verified working with idalib (no GUI launch needed).
 
 ---

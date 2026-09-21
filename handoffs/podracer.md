@@ -23,6 +23,6 @@ IDA independently reproduced the recomp's function table to the function — the
 cleanest result of all projects checked. **No action required.**
 
 ## Deliverable: aligned reference pseudocode
-`E:\ida\work\podracer\decomp\_podracer_reference.c` (~76 KB) — Hex-Rays MIPS64
+`$IDA_WORK/podracer/decomp/_podracer_reference.c` (~76 KB) — Hex-Rays MIPS64
 decompilation of the 15 largest functions + 5 stubs, addresses matching the recomp.
-Regenerate with `E:\ida\tools\n64_analyze.py`.
+Regenerate with `tools/n64_analyze.py`.
